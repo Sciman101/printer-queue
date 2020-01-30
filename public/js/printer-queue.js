@@ -77,7 +77,7 @@ $(function() { // document ready
     var title = document.getElementById('ptitle').value;
     //convert form fields to moments
     var start = moment(document.getElementById('pstart').value, 'YYYY-MM-DD hh:mm a', true);
-    var end = moment(document.getElementById('pend').value, 'YYYY-MM-DD hh:mm a', true);
+    var end = moment(start).add(document.getElementById('pduration').value,'hours');
 
     //validate title
     if (!title.trim()) {
@@ -254,10 +254,6 @@ $(function() { // document ready
         title: 'MakerBot Z18 ',
         eventColor: 'red'
       }, {
-        id: 'e',
-        title: 'Taz Pro ',
-        eventColor: '#43A047'
-      }, {
         id: 'f',
         title: 'Prusa 1 ',
         eventColor: 'orange'
@@ -270,10 +266,26 @@ $(function() { // document ready
         title: 'Prusa 3 ',
         eventColor: 'purple'
       }, {
+        id: 'j',
+        title: 'Prusa M1 ',
+        eventColor: '#78909C'
+      }, {
+        id: 'k',
+        title: 'Prusa M2 ',
+        eventColor: '#78909C'
+      }, {
+        id: 'l',
+        title: 'Prusa M3 ',
+        eventColor: '#78909C'
+      }, {
         id: 'i',
         title: 'Ender ',
         eventColor: '#78909C'
-      }
+      }, {
+        id: 'e',
+        title: 'Taz Pro ',
+        eventColor: '#43A047'
+      }, 
     ],
     drop: function(date, jsEvent, ui, resourceId) {
       console.log('drop', date.format(), resourceId);
@@ -295,9 +307,10 @@ $(function() { // document ready
       document.getElementById('ptitle').value = event.title; //set title field
       //display start and end moments in form fields
       document.getElementById('pstart').value = moment(event.start).format('YYYY-MM-DD hh:mm a')
-      document.getElementById('pend').value = moment(event.end).format('YYYY-MM-DD hh:mm a');
+	  document.getElementById('pduration').value = moment.duration(event.end.diff(event.start)).asHours();
+      //document.getElementById('pend').value = moment(event.end).format('YYYY-MM-DD hh:mm a');
 
-      document.getElementById('pduration').textContent = moment(event.end).diff(event.start, 'hours', true) + ' hours'
+      //document.getElementById('pduration').textContent = moment(event.end).diff(event.start, 'hours', true) + ' hours'
       modal.style.display = "block";
 
       //when user clicks modal submit button
@@ -328,9 +341,10 @@ $(function() { // document ready
 
       //display start and end moments in form fields
       document.getElementById('pstart').value = moment(event.start).format('YYYY-MM-DD hh:mm a');
-      document.getElementById('pend').value = moment(event.end).format('YYYY-MM-DD hh:mm a');
+	  document.getElementById('pduration').value = moment.duration(event.end.diff(event.start)).asHours();
+      //document.getElementById('pend').value = moment(event.end).format('YYYY-MM-DD hh:mm a');
 
-      document.getElementById('pduration').textContent = moment(event.end).diff(event.start, 'hours', true) + ' hours'
+      //document.getElementById('pduration').textContent = moment(event.end).diff(event.start, 'hours', true) + ' hours'
       modal.style.display = "block";
 
       //when user clicks modal submit button
