@@ -255,28 +255,24 @@ $(function() { // document ready
         eventColor: 'red'
       }, {
         id: 'e',
-        title: 'Taz 6 ',
+        title: 'Taz Pro ',
         eventColor: '#43A047'
       }, {
         id: 'f',
-        title: 'Robo R1 1 ',
+        title: 'Prusa 1 ',
         eventColor: 'orange'
       }, {
         id: 'g',
-        title: 'Robo R1 2 ',
+        title: 'Prusa 2 ',
         eventColor: 'maroon'
       }, {
         id: 'h',
-        title: 'Robo R1 3 ',
+        title: 'Prusa 3 ',
         eventColor: 'purple'
       }, {
         id: 'i',
-        title: 'Robo R1 4 ',
+        title: 'Ender ',
         eventColor: '#78909C'
-      }, {
-        id: 'j',
-        title: 'Robo R2 ',
-        eventColor: '#3F51B5'
       }
     ],
     drop: function(date, jsEvent, ui, resourceId) {
